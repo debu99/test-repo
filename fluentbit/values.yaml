@@ -21,25 +21,24 @@ fluent-bit:
   config:
     outputs: |
       [OUTPUT]
-        Name es
-        Match kube.*
-        Host ${FLUENT_ELASTICSEARCH_HOST}
-        Port ${FLUENT_ELASTICSEARCH_PORT}
-        HTTP_User ${FLUENT_ELASTICSEARCH_USER}
-        HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
-        Logstash_Format On
-        Retry_Limit False
-        tls On
+          Name es
+          Match kube.*
+          Host ${FLUENT_ELASTICSEARCH_HOST}
+          Port ${FLUENT_ELASTICSEARCH_PORT}
+          HTTP_User ${FLUENT_ELASTICSEARCH_USER}
+          HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
+          Logstash_Format On
+          Retry_Limit False
+          tls On
 
       [OUTPUT]
-        Name es
-        Match host.*
-        Host ${FLUENT_ELASTICSEARCH_HOST}
-        Port ${FLUENT_ELASTICSEARCH_PORT}
-        HTTP_User ${FLUENT_ELASTICSEARCH_USER}
-        HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
-        Logstash_Format On
-        Logstash_Prefix node
-        Retry_Limit False
-        tls On
-
+          Name es
+          Match host.*
+          Host ${FLUENT_ELASTICSEARCH_HOST}
+          Port ${FLUENT_ELASTICSEARCH_PORT}
+          HTTP_User ${FLUENT_ELASTICSEARCH_USER}
+          HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
+          Logstash_Format On
+          Logstash_Prefix node
+          Retry_Limit False
+          tls On
