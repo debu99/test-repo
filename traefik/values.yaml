@@ -1,0 +1,6 @@
+traefik:
+  logs:
+    general:
+      level: DEBUG
+    access:
+      enabled: true
