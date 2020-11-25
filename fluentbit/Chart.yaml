@@ -1,1 +1,3 @@
+apiVersion: v2
 name: fluentbit
+version: v0.0.1
