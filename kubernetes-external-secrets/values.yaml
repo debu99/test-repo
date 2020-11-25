@@ -1,0 +1,23 @@
+kubernetes-external-secrets:
+  env:
+    AWS_REGION: ap-southeast-1
+    AWS_DEFAULT_REGION: ap-southeast-1
+    POLLER_INTERVAL_MILLISECONDS: 300000
+    LOG_LEVEL: info
+    LOG_MESSAGE_KEY: 'msg'
+    USE_HUMAN_READABLE_LOG_LEVELS: true
+    METRICS_PORT: 3001
+  envVarsFromSecret:
+    AWS_ACCESS_KEY_ID:
+      secretKeyRef: aws-credentials
+      key: aws_access_key_id
+    AWS_SECRET_ACCESS_KEY:
+      secretKeyRef: aws-credentials
+      key: aws_secret_access_key
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi

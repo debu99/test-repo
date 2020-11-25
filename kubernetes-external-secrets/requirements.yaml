@@ -1,0 +1,5 @@
+dependencies:
+- name: kubernetes-external-secrets
+  version: 6.0.0
+  repository: https://external-secrets.github.io/kubernetes-external-secrets/
+
