@@ -1,42 +1,43 @@
-serviceMonitor:
-  enabled: false
-  namespace: monitoring
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
-env:
-  - name: FLUENT_ELASTICSEARCH_HOST
-    value: "https://c968be92c09241688f21d4cc28b17b7e.apm.ap-southeast-1.aws.cloud.es.io"
-  - name: FLUENT_ELASTICSEARCH_PORT
-    value: "443"
-  - name: FLUENT_ELASTICSEARCH_USER
-    value: "elastic"
-  - name: FLUENT_ELASTICSEARCH_PASSWORD
-    value: "N0L2V6MBhYHw93UwfOPBiJVI"
-config:
-  outputs: |
-    [OUTPUT]
-      Name es
-      Match kube.*
-      Host            ${FLUENT_ELASTICSEARCH_HOST}
-      Port            ${FLUENT_ELASTICSEARCH_PORT}
-      HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
-      HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
-      Logstash_Format On
-      Retry_Limit False
-      tls On
-    [OUTPUT]
-      Name es
-      Match host.*
-      Host            ${FLUENT_ELASTICSEARCH_HOST}
-      Port            ${FLUENT_ELASTICSEARCH_PORT}
-      HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
-      HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
-      Logstash_Format On
-      Logstash_Prefix node
-      Retry_Limit False
-      tls On
+fluentbit:
+  serviceMonitor:
+    enabled: true
+    namespace: monitoring
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  env:
+    - name: FLUENT_ELASTICSEARCH_HOST
+      value: "https://c968be92c09241688f21d4cc28b17b7e.apm.ap-southeast-1.aws.cloud.es.io"
+    - name: FLUENT_ELASTICSEARCH_PORT
+      value: "443"
+    - name: FLUENT_ELASTICSEARCH_USER
+      value: "elastic"
+    - name: FLUENT_ELASTICSEARCH_PASSWORD
+      value: "N0L2V6MBhYHw93UwfOPBiJVI"
+  config:
+    outputs: |
+      [OUTPUT]
+        Name es
+        Match kube.*
+        Host            ${FLUENT_ELASTICSEARCH_HOST}
+        Port            ${FLUENT_ELASTICSEARCH_PORT}
+        HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
+        HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
+        Logstash_Format On
+        Retry_Limit False
+        tls On
+      [OUTPUT]
+        Name es
+        Match host.*
+        Host            ${FLUENT_ELASTICSEARCH_HOST}
+        Port            ${FLUENT_ELASTICSEARCH_PORT}
+        HTTP_User       ${FLUENT_ELASTICSEARCH_USER}
+        HTTP_Passwd     ${FLUENT_ELASTICSEARCH_PASSWORD}
+        Logstash_Format On
+        Logstash_Prefix node
+        Retry_Limit False
+        tls On
