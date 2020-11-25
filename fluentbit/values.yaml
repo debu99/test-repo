@@ -1,4 +1,4 @@
-fluentbit:
+fluent-bit:
   serviceMonitor:
     enabled: true
     namespace: monitoring
