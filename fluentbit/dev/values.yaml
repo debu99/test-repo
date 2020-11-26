@@ -11,7 +11,7 @@ fluent-bit:
       memory: 128Mi
   env:
     - name: FLUENT_ELASTICSEARCH_HOST
-      value: "https://c968be92c09241688f21d4cc28b17b7e.apm.ap-southeast-1.aws.cloud.es.io"
+      value: "c968be92c09241688f21d4cc28b17b7e.apm.ap-southeast-1.aws.cloud.es.io"
     - name: FLUENT_ELASTICSEARCH_PORT
       value: "443"
   envFrom:
