@@ -11,9 +11,9 @@ fluent-bit:
       memory: 128Mi
   env:
     - name: FLUENT_ELASTICSEARCH_HOST
-      value: "c968be92c09241688f21d4cc28b17b7e.apm.ap-southeast-1.aws.cloud.es.io"
+      value: "40cc384c9f0d4e31bd126ac33024e525.ap-southeast-1.aws.found.io"
     - name: FLUENT_ELASTICSEARCH_PORT
-      value: "443"
+      value: "9243"
   envFrom:
     - secretRef:
         name: fluentbit
@@ -27,8 +27,11 @@ fluent-bit:
           HTTP_User ${FLUENT_ELASTICSEARCH_USER}
           HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
           Logstash_Format On
+          Replace_Dots    On
           Retry_Limit False
+          flb_type _doc
           tls On
+          tls.verify Off
 
       [OUTPUT]
           Name es
@@ -40,4 +43,7 @@ fluent-bit:
           Logstash_Format On
           Logstash_Prefix node
           Retry_Limit False
+          flb_type _doc
           tls On
+          tls.verify Off
+
