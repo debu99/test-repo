@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: fluentbit
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
 spec:
   destination:
     namespace: logging
@@ -28,6 +30,8 @@ kind: Application
 metadata:
   name: traefik
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "99"
 spec:
   destination:
     namespace: ingress
@@ -52,6 +56,8 @@ kind: Application
 metadata:
   name: kubernetes-external-secrets
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   destination:
     namespace: secret
