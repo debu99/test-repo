@@ -14,7 +14,7 @@ spec:
   source:
     helm:
       valueFiles:
-      - values.yaml
+      - dev/values.yaml
     path: fluentbit
     repoURL: 'https://github.com/debu99/test-repo.git'
     targetRevision: HEAD
@@ -24,6 +24,27 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluentbit-secrets
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "8"
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: logging
+  project: default
+  source:
+    repoURL: 'https://github.com/debu99/test-repo.git'
+    path: fluentbit-secrets/dev/
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -40,7 +61,7 @@ spec:
   source:
     helm:
       valueFiles:
-      - values.yaml
+      - dev/values.yaml
     path: traefik
     repoURL: 'https://github.com/debu99/test-repo.git'
     targetRevision: HEAD
@@ -66,7 +87,7 @@ spec:
   source:
     helm:
       valueFiles:
-      - values.yaml
+      - dev/values.yaml
     path: kubernetes-external-secrets
     repoURL: 'https://github.com/debu99/test-repo.git'
     targetRevision: HEAD
