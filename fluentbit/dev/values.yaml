@@ -29,7 +29,6 @@ fluent-bit:
           Logstash_Format On
           Replace_Dots    On
           Retry_Limit False
-          flb_type _doc
           tls On
           tls.verify Off
 
@@ -43,7 +42,6 @@ fluent-bit:
           Logstash_Format On
           Logstash_Prefix node
           Retry_Limit False
-          flb_type _doc
           tls On
           tls.verify Off
 
