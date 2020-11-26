@@ -16,7 +16,7 @@ fluent-bit:
       value: "443"
   envFrom:
     - secretRef:
-      name: fluentbit
+        name: fluentbit
   config:
     outputs: |
       [OUTPUT]
