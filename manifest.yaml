@@ -31,7 +31,7 @@ metadata:
   name: fluentbit-secrets
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "8"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
@@ -39,7 +39,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/debu99/test-repo.git'
-    path: fluentbit-secrets/dev/
+    path: secrets/fluentbit-secrets/dev/
     targetRevision: HEAD
   syncPolicy:
     automated:
@@ -115,6 +115,32 @@ spec:
       valueFiles:
       - dev/values.yaml
     path: prometheus
+    repoURL: 'https://github.com/debu99/test-repo.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-autoscaler
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "99"
+spec:
+  destination:
+    namespace: kube-system
+    server: 'https://kubernetes.default.svc'
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - dev/values.yaml
+    path: cluster-autoscaler
     repoURL: 'https://github.com/debu99/test-repo.git'
     targetRevision: HEAD
   syncPolicy:

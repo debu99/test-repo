@@ -1,0 +1,19 @@
+cluster-autoscaler-chart:
+  cloudProvider: aws
+  autoDiscovery:
+    enabled: true
+    clusterName: notejam
+  awsRegion: ap-southeast-1
+  resources:
+    limits:
+      cpu: 100m
+      memory: 300Mi
+    requests:
+      cpu: 10m
+      memory: 100Mi
+  rbac:
+    create: true
+    serviceAccount:
+      name: aws-cluster-autoscaler
+      annotations:
+        eks.amazonaws.com/role-arn: "arn:aws:iam::702051619253:role/cluster-autoscaler"

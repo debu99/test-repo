@@ -1,0 +1,4 @@
+dependencies:
+- name: cluster-autoscaler
+  version: 9.1.0
+  repository: https://kubernetes.github.io/autoscaler
