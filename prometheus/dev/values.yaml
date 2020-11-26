@@ -6,8 +6,7 @@ prometheus:
   server:
     persistentVolume:
       size: 1Gi
-    extraArgs:
-      storage.local.retention: 72h
+    retention: 72h
     resources:
       limits:
         cpu: 500m
