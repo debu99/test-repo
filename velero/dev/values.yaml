@@ -25,6 +25,8 @@ velero:
       name: velero-server
       annotations:
         eks.amazonaws.com/role-arn: "arn:aws:iam::702051619253:role/notejam-velero"
+  securityContext:
+    fsGroup: 65534
   snapshotsEnabled: false
   schedules:
     mybackup:
