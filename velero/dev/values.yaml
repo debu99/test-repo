@@ -10,7 +10,6 @@ velero:
   configuration:
     provider: aws
     backupStorageLocation:
-      name: notejam-eks-backup
       bucket: notejam-eks-backup
       config: 
         region: ap-southeast-1
