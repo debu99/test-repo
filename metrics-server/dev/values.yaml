@@ -1,6 +1,6 @@
 metrics-server:
+  hostNetwork: true
   extraArgs:
     kubelet-insecure-tls: true
     kubelet-preferred-address-types: InternalIP
     cert-dir: /tmp
-    secure-port: 4443
