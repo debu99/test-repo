@@ -1,13 +1,13 @@
 metrics-server:
-  hostNetwork: true
-  securePort: 4443
+  #hostNetwork: true
+  #securePort: 4443
   apiService:
     create: true
   extraArgs:
     kubelet-insecure-tls: true
     kubelet-preferred-address-types: InternalIP
-    cert-dir: /tmp
-    secure-port: 4443
+    #cert-dir: /tmp
+    #secure-port: 4443
   resources:
     limits:
       cpu: 250m
