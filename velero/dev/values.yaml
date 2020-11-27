@@ -19,6 +19,12 @@ velero:
         region: ap-southeast-1
   credentials:
     useSecret: false
+  serviceAccount:
+    server:
+      create: true
+      name: velero-server
+      annotations:
+        eks.amazonaws.com/role-arn: "arn:aws:iam::702051619253:role/notejam-velero"
   snapshotsEnabled: false
   schedules:
     mybackup:

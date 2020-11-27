@@ -179,27 +179,6 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: velero-secrets
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "5"
-spec:
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: backup
-  project: default
-  source:
-    repoURL: 'https://github.com/debu99/test-repo.git'
-    path: secrets/velero-secrets/dev/
-    targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
   name: hpa-operator
   namespace: argocd
   annotations:
