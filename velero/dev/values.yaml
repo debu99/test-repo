@@ -32,12 +32,3 @@ velero:
   securityContext:
     fsGroup: 65534
   snapshotsEnabled: false
-  schedules:
-    mybackup:
-      labels:
-        env: dev
-      schedule: "0 0 * * *"
-      template:
-        ttl: "48h"
-        includedNamespaces:
-        - dev
