@@ -11,12 +11,13 @@ velero:
     name: default
     provider: aws
     backupStorageLocation:
+      name: notejam-eks-backup
       bucket: notejam-eks-backup
       prefix: velero-backup
       config: 
         region: ap-southeast-1
     volumeSnapshotLocation:
-      name: default
+      name: volumeSnapshots
       config: 
         region: ap-southeast-1
       logLevel: debug
