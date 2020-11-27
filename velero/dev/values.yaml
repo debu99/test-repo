@@ -18,8 +18,7 @@ velero:
       config: 
         region: ap-southeast-1
   credentials:
-    useSecret: true
-    existingSecret: credentials-velero
+    useSecret: false
   snapshotsEnabled: false
   schedules:
     mybackup:
