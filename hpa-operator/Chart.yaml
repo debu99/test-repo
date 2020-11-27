@@ -1,0 +1,3 @@
+apiVersion: v2
+name: hpa-operator
+version: v0.0.1

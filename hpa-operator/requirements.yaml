@@ -1,0 +1,4 @@
+dependencies:
+- name: hpa-operator
+  version: 0.3.0
+  repository: https://kubernetes-charts.banzaicloud.com

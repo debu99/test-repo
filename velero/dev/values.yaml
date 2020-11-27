@@ -1,0 +1,32 @@
+velero:
+  initContainers: 
+    - name: velero-plugin-for-aws
+      image: velero/velero-plugin-for-aws:v1.1.0
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - mountPath: /target
+          name: plugins
+  enableHelmHooks: false
+  configuration:
+    provider: aws
+    backupStorageLocation:
+      bucket: dev-k8s-backup
+      config: 
+        region: ap-southeast-1
+    volumeSnapshotLocation:
+      name: volumeSnapshot
+      config: 
+        region: ap-southeast-1
+  credentials:
+    useSecret: true
+    existingSecret: credentials-velero
+  snapshotsEnabled: false
+  schedules:
+    mybackup:
+      labels:
+        env: dev
+      schedule: "0 0 * * *"
+      template:
+        ttl: "48h"
+        includedNamespaces:
+        - dev
