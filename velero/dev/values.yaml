@@ -10,6 +10,7 @@ velero:
   configuration:
     provider: aws
     backupStorageLocation:
+      name: notejam-eks-backup
       bucket: notejam-eks-backup
       config: 
         region: ap-southeast-1
@@ -17,6 +18,7 @@ velero:
       name: volumeSnapshot
       config: 
         region: ap-southeast-1
+      logLevel: debug
   credentials:
     useSecret: false
   serviceAccount:
