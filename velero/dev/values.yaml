@@ -8,13 +8,15 @@ velero:
           name: plugins
   enableHelmHooks: false
   configuration:
+    name: default
     provider: aws
     backupStorageLocation:
       bucket: notejam-eks-backup
+      prefix: velero-backup
       config: 
         region: ap-southeast-1
     volumeSnapshotLocation:
-      name: volumeSnapshot
+      name: default
       config: 
         region: ap-southeast-1
       logLevel: debug
